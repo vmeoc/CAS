@@ -1,0 +1,30 @@
+---
+exportVersion: "1"
+exportId: "8a7696de6a208de0016a2563915c03a8"
+name: "SendSMS"
+runtime: "python"
+entrypoint: "handler"
+inputs:
+  url: "https://api.clickatell.com/rest/message"
+  method: "POST"
+  headers:
+    Accept: "application/json"
+    X-Version: "1"
+    Content-Type: "application/json"
+    Authorization: "bearer <put your token here>"
+  payload: "{\"text\":\"Hello from CAS\",\"to\":[\"+33621204883\"]}"
+outputNames:
+- "statusCode"
+- "status"
+- "responseBody"
+- "responseHeaders"
+timeoutSeconds: 180
+dependencies: "requests"
+actionType: "REST_CALL"
+configuration:
+  const-providers:
+  - ""
+  const_azure-system_managed_identity: false
+actionTemplateName: "REST request"
+actionTemplateNamespace: "com.vmware.automation.abx"
+memoryInMB: 128
